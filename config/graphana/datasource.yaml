@@ -1,0 +1,15 @@
+apiVersion: 1
+
+datasources:
+  - name: InfluxDB
+    uid: aek0i66qivwg0c    # <-- Match the old UID exactly!
+    type: influxdb
+    access: proxy
+    url: http://172.17.0.1:8086
+    jsonData:
+      version: Flux
+      organization: gotn
+      defaultBucket: gotn-bucket
+    secureJsonData:
+      token: _ngsl81ZgEW-zivbImIl6kjANpltSdb6Pu-SPe116a7tBk7epMizCTHN2NgO8-xfNsrhaOTNijZRg352HS4V4w==
+
