@@ -1,35 +1,4 @@
 {
-  "__inputs": [
-    {
-      "name": "DS_INFLUXDB",
-      "label": "influxdb",
-      "description": "",
-      "type": "datasource",
-      "pluginId": "influxdb",
-      "pluginName": "InfluxDB"
-    }
-  ],
-  "__elements": {},
-  "__requires": [
-    {
-      "type": "grafana",
-      "id": "grafana",
-      "name": "Grafana",
-      "version": "11.6.1"
-    },
-    {
-      "type": "datasource",
-      "id": "influxdb",
-      "name": "InfluxDB",
-      "version": "1.0.0"
-    },
-    {
-      "type": "panel",
-      "id": "timeseries",
-      "name": "Time series",
-      "version": ""
-    }
-  ],
   "annotations": {
     "list": [
       {
@@ -49,13 +18,13 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "id": null,
+  "id": 1,
   "links": [],
   "panels": [
     {
       "datasource": {
         "type": "influxdb",
-        "uid": "${DS_INFLUXDB}"
+        "uid": "aek0i66qivwg0c"
       },
       "fieldConfig": {
         "defaults": {
@@ -117,7 +86,7 @@
         "x": 0,
         "y": 0
       },
-      "id": 3,
+      "id": 1,
       "options": {
         "legend": {
           "calcs": [],
@@ -134,21 +103,21 @@
       "pluginVersion": "11.6.1",
       "targets": [
         {
-          "query": "from(bucket: \"gotn-metrics\")\n  |> range(start: -1h)\n  |> filter(fn: (r) => r._measurement == \"llm_structured_response\")\n  |> filter(fn: (r) => r._field == \"duration\")",
-          "refId": "A",
           "datasource": {
             "type": "influxdb",
-            "uid": "${DS_INFLUXDB}"
-          }
+            "uid": "aek0i66qivwg0c"
+          },
+          "query": "from(bucket: \"gotn-metrics\")\n  |> range(start: -1h)\n  |> filter(fn: (r) => r._measurement == \"embedding_similarity_check\")\n  |> filter(fn: (r) => r._field == \"duration\")",
+          "refId": "A"
         }
       ],
-      "title": "llm_structured_response",
+      "title": "embedding_similarity_check",
       "type": "timeseries"
     },
     {
       "datasource": {
         "type": "influxdb",
-        "uid": "${DS_INFLUXDB}"
+        "uid": "aek0i66qivwg0c"
       },
       "fieldConfig": {
         "defaults": {
@@ -210,7 +179,7 @@
         "x": 8,
         "y": 0
       },
-      "id": 1,
+      "id": 4,
       "options": {
         "legend": {
           "calcs": [],
@@ -229,19 +198,19 @@
         {
           "datasource": {
             "type": "influxdb",
-            "uid": "${DS_INFLUXDB}"
+            "uid": "aek0i66qivwg0c"
           },
-          "query": "from(bucket: \"gotn-metrics\")\n  |> range(start: -1h)\n  |> filter(fn: (r) => r._measurement == \"embedding_similarity_check\")\n  |> filter(fn: (r) => r._field == \"duration\")",
+          "query": "from(bucket: \"gotn-metrics\")\n  |> range(start: -15m)\n  |> filter(fn: (r) => r._measurement == \"server_metrics\")\n  |> filter(fn: (r) => r._field == \"cpu_percent\")\n  |> yield(name: \"cpu_utilization\") ",
           "refId": "A"
         }
       ],
-      "title": "embedding_similarity_check",
+      "title": "cpu_percent",
       "type": "timeseries"
     },
     {
       "datasource": {
         "type": "influxdb",
-        "uid": "${DS_INFLUXDB}"
+        "uid": "aek0i66qivwg0c"
       },
       "fieldConfig": {
         "defaults": {
@@ -303,7 +272,7 @@
         "x": 16,
         "y": 0
       },
-      "id": 2,
+      "id": 7,
       "options": {
         "legend": {
           "calcs": [],
@@ -320,21 +289,21 @@
       "pluginVersion": "11.6.1",
       "targets": [
         {
-          "query": "from(bucket: \"gotn-metrics\")\n  |> range(start: -1h)\n  |> filter(fn: (r) => r._measurement == \"llm_unstructured_response\")\n  |> filter(fn: (r) => r._field == \"duration\")",
-          "refId": "A",
           "datasource": {
             "type": "influxdb",
-            "uid": "${DS_INFLUXDB}"
-          }
+            "uid": "aek0i66qivwg0c"
+          },
+          "query": "from(bucket: \"gotn-metrics\")\n  |> range(start: -15m)\n  |> filter(fn: (r) => r._measurement == \"server_metrics\")\n  |> filter(fn: (r) => r._field == \"streamlit_latency_ms\")\n  |> yield(name: \"streamlit_latency\")\n",
+          "refId": "A"
         }
       ],
-      "title": "llm_untructured_response",
+      "title": "streamlit_latency_ms",
       "type": "timeseries"
     },
     {
       "datasource": {
         "type": "influxdb",
-        "uid": "${DS_INFLUXDB}"
+        "uid": "aek0i66qivwg0c"
       },
       "fieldConfig": {
         "defaults": {
@@ -396,7 +365,7 @@
         "x": 0,
         "y": 6
       },
-      "id": 4,
+      "id": 3,
       "options": {
         "legend": {
           "calcs": [],
@@ -413,21 +382,21 @@
       "pluginVersion": "11.6.1",
       "targets": [
         {
-          "query": "from(bucket: \"gotn-metrics\")\n  |> range(start: -15m)\n  |> filter(fn: (r) => r._measurement == \"server_metrics\")\n  |> filter(fn: (r) => r._field == \"cpu_percent\")\n  |> yield(name: \"cpu_utilization\") ",
-          "refId": "A",
           "datasource": {
             "type": "influxdb",
-            "uid": "${DS_INFLUXDB}"
-          }
+            "uid": "aek0i66qivwg0c"
+          },
+          "query": "from(bucket: \"gotn-metrics\")\n  |> range(start: -1h)\n  |> filter(fn: (r) => r._measurement == \"llm_structured_response\")\n  |> filter(fn: (r) => r._field == \"duration\")",
+          "refId": "A"
         }
       ],
-      "title": "cpu_percent",
+      "title": "llm_structured_response",
       "type": "timeseries"
     },
     {
       "datasource": {
         "type": "influxdb",
-        "uid": "${DS_INFLUXDB}"
+        "uid": "aek0i66qivwg0c"
       },
       "fieldConfig": {
         "defaults": {
@@ -489,7 +458,7 @@
         "x": 8,
         "y": 6
       },
-      "id": 5,
+      "id": 8,
       "options": {
         "legend": {
           "calcs": [],
@@ -506,21 +475,17 @@
       "pluginVersion": "11.6.1",
       "targets": [
         {
-          "query": "from(bucket: \"gotn-metrics\")\n  |> range(start: -15m)\n  |> filter(fn: (r) => r._measurement == \"server_metrics\")\n  |> filter(fn: (r) => r._field == \"memory_percent\")\n  |> yield(name: \"memory_utilization\")",
-          "refId": "A",
-          "datasource": {
-            "type": "influxdb",
-            "uid": "${DS_INFLUXDB}"
-          }
+          "query": "from(bucket: \"gotn-metrics\")\n  |> range(start: -15m)\n  |> filter(fn: (r) => r._measurement == \"server_metrics\")\n  |> filter(fn: (r) => r._field == \"gpu_percent\")\n  |> yield(name: \"gpu_utilization\") ",
+          "refId": "A"
         }
       ],
-      "title": "memory_percent",
+      "title": "GPU Percent",
       "type": "timeseries"
     },
     {
       "datasource": {
         "type": "influxdb",
-        "uid": "${DS_INFLUXDB}"
+        "uid": "aek0i66qivwg0c"
       },
       "fieldConfig": {
         "defaults": {
@@ -599,12 +564,12 @@
       "pluginVersion": "11.6.1",
       "targets": [
         {
-          "query": "from(bucket: \"gotn-metrics\")\n  |> range(start: -15m)\n  |> filter(fn: (r) => r._measurement == \"server_metrics\")\n  |> filter(fn: (r) => r._field == \"disk_percent\")\n  |> yield(name: \"disk_utilization\")\n",
-          "refId": "A",
           "datasource": {
             "type": "influxdb",
-            "uid": "${DS_INFLUXDB}"
-          }
+            "uid": "aek0i66qivwg0c"
+          },
+          "query": "from(bucket: \"gotn-metrics\")\n  |> range(start: -15m)\n  |> filter(fn: (r) => r._measurement == \"server_metrics\")\n  |> filter(fn: (r) => r._field == \"disk_percent\")\n  |> yield(name: \"disk_utilization\")\n",
+          "refId": "A"
         }
       ],
       "title": "disk_percent",
@@ -613,7 +578,7 @@
     {
       "datasource": {
         "type": "influxdb",
-        "uid": "${DS_INFLUXDB}"
+        "uid": "aek0i66qivwg0c"
       },
       "fieldConfig": {
         "defaults": {
@@ -670,12 +635,12 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 8,
-        "w": 12,
+        "h": 6,
+        "w": 8,
         "x": 0,
         "y": 12
       },
-      "id": 7,
+      "id": 2,
       "options": {
         "legend": {
           "calcs": [],
@@ -692,18 +657,112 @@
       "pluginVersion": "11.6.1",
       "targets": [
         {
-          "query": "from(bucket: \"gotn-metrics\")\n  |> range(start: -15m)\n  |> filter(fn: (r) => r._measurement == \"server_metrics\")\n  |> filter(fn: (r) => r._field == \"streamlit_latency_ms\")\n  |> yield(name: \"streamlit_latency\")\n",
-          "refId": "A",
           "datasource": {
             "type": "influxdb",
-            "uid": "${DS_INFLUXDB}"
-          }
+            "uid": "aek0i66qivwg0c"
+          },
+          "query": "from(bucket: \"gotn-metrics\")\n  |> range(start: -1h)\n  |> filter(fn: (r) => r._measurement == \"llm_unstructured_response\")\n  |> filter(fn: (r) => r._field == \"duration\")",
+          "refId": "A"
         }
       ],
-      "title": "streamlit_latency_ms",
+      "title": "llm_untructured_response",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "influxdb",
+        "uid": "aek0i66qivwg0c"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "barWidthFactor": 0.6,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green"
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 6,
+        "w": 8,
+        "x": 8,
+        "y": 12
+      },
+      "id": 5,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "hideZeros": false,
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "11.6.1",
+      "targets": [
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "aek0i66qivwg0c"
+          },
+          "query": "from(bucket: \"gotn-metrics\")\n  |> range(start: -15m)\n  |> filter(fn: (r) => r._measurement == \"server_metrics\")\n  |> filter(fn: (r) => r._field == \"memory_percent\")\n  |> yield(name: \"memory_utilization\")",
+          "refId": "A"
+        }
+      ],
+      "title": "memory_percent",
       "type": "timeseries"
     }
   ],
+  "preload": false,
   "refresh": "5s",
   "schemaVersion": 41,
   "tags": [],
@@ -716,8 +775,7 @@
   },
   "timepicker": {},
   "timezone": "browser",
-  "title": "New dashboard",
+  "title": "GOTN",
   "uid": "cek0ibdg15se8e",
-  "version": 12,
-  "weekStart": ""
+  "version": 4
 }
