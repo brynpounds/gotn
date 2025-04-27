@@ -1,9 +1,24 @@
-# structured_mode.py
+# ui/structured_mode.py
 
 import streamlit as st
 from core.grader import get_structured_score
 from core.scores import update_score
 import random
+import logging
+
+# 🔥 Autofocus helper
+def autofocus_text_input():
+    st.markdown(
+        """
+        <script>
+        const input = window.parent.document.querySelector('input[type="text"]');
+        if (input) {
+            input.focus();
+        }
+        </script>
+        """,
+        unsafe_allow_html=True,
+    )
 
 def run(trouble_tickets, snarky_comments):
     st.subheader("📋 Select a Ticket Mode and see if you can diagnose the problem")
@@ -17,11 +32,21 @@ def run(trouble_tickets, snarky_comments):
     ticket = next(t for t in trouble_tickets if str(t["id"]) == ticket_id)
 
     st.write(f"**Trouble Ticket {ticket['id']}:** {ticket['issue']}")
-    user_answer = st.text_area("Enter your diagnosis:")
 
-    if st.button("Submit Diagnosis"):
+    email = st.session_state.get("player_email", "")
+    logging.info(f"Player {email} selected Trouble Ticket #{ticket['id']}: Issue = '{ticket['issue']}', Root Cause = '{ticket['root_cause']}'")
+
+    with st.form("structured_diagnosis_form", clear_on_submit=True):
+        user_answer = st.text_input("Enter your diagnosis:")
+        autofocus_text_input()
+        submitted = st.form_submit_button("Submit Diagnosis")
+
+    if submitted:
         max_points = int(ticket["scoring"].split()[0])
         result = get_structured_score(user_answer, ticket["root_cause"], max_points)
+
+        logging.info(f"Player {email} submitted diagnosis: '{user_answer}' — Target Root Cause = '{ticket['root_cause']}' — Awarded {result['awarded_points']} points.")
+        #logging.info(f"Player {email} submitted diagnosis for Ticket #{ticket['id']}: '{user_answer}' — Awarded {result['awarded_points']} points.")
 
         if result["awarded_points"] == 0 and result["rejection_reason"]:
             st.warning(result["rejection_reason"])
@@ -37,4 +62,5 @@ def run(trouble_tickets, snarky_comments):
             st.write(f"💀 **{random.choice(snarky_comments)}**")
 
         st.caption(f"🔎 Debug Info: Similarity Score = {result['similarity_score']}")
+
 

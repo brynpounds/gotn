@@ -3,6 +3,7 @@
 import streamlit as st
 from core.scores import get_scores
 from core.loader import load_game_data
+import logging
 
 def run():
     st.subheader("📊 Your Scores")
@@ -10,6 +11,8 @@ def run():
     if not email:
         st.warning("Please enter your email in the sidebar.")
         return
+
+    logging.info(f"Player {email} navigated to the 'Your Scores' page.")
 
     structured = get_scores(email, "structured")
     unstructured = get_scores(email, "unstructured")

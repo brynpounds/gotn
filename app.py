@@ -11,6 +11,20 @@ from config.settings import REDIS_HOST, REDIS_PORT
 
 import redis
 
+import logging
+
+# Configure logging
+LOG_FILE_PATH = '/var/log/gotn.log'
+
+logging.basicConfig(
+    level=logging.INFO,
+    format='%(asctime)s - %(levelname)s - %(message)s',
+    handlers=[
+        logging.FileHandler(LOG_FILE_PATH),
+        logging.StreamHandler()  # also prints to console for now
+    ]
+)
+
 # Optional: import threshold to display in sidebar
 from core.grader import SIMILARITY_THRESHOLD
 
@@ -71,7 +85,18 @@ snarky_comments = game_data["snarky_comments"]
 
 st.sidebar.header("Settings")
 snarky_mode_toggle = st.sidebar.checkbox("Enable Snarky Mode", value=st.session_state["snarky_mode"])
+
+# Check if the user changed snarky mode
+previous_snarky = st.session_state.get("previous_snarky_mode", None)
+
 st.session_state["snarky_mode"] = snarky_mode_toggle
+st.session_state["previous_snarky_mode"] = snarky_mode_toggle
+
+email = st.session_state.get("player_email", "")
+
+if previous_snarky is not None and previous_snarky != snarky_mode_toggle:
+    status = "ENABLED" if snarky_mode_toggle else "DISABLED"
+    logging.info(f"Player {email} {status} Snarky Mode.")
 
 # Optional: Show threshold (for debug/tuning visibility)
 st.sidebar.markdown(f"### Filter Threshold: `{SIMILARITY_THRESHOLD}`")

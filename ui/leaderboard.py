@@ -1,10 +1,15 @@
 import streamlit as st
+import logging
 import redis
 from config.settings import REDIS_HOST, REDIS_PORT
 from core.scores import get_scores
 
 def run():
     st.subheader("🏆 Leaderboard")
+
+    email = st.session_state.get("player_email", "")
+    if email:
+        logging.info(f"Player {email} navigated to the 'Leaderboard' page.")
 
     r = redis.Redis(host=REDIS_HOST, port=REDIS_PORT, decode_responses=True)
     keys = r.keys("player:*:structured")
