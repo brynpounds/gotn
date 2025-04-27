@@ -1,0 +1,129 @@
+{
+    "trouble_tickets": [
+        {
+            "id": 111,
+            "issue": "Users at Site 2 are reporting slow Wi-Fi.",
+            "root_cause": "An incorrect bandwidth throttle at 10 Mbps.",
+            "scoring": "50 points available. Full score for identifying the WAN link throttle."
+        },
+        {
+            "id": 112,
+            "issue": "Users at Site 5 are experiencing frequent disconnects from the Wi-Fi network.",
+            "root_cause": "A faulty cable connecting the access point.",
+            "scoring": "50 points available. Full score for identifying a bad cable or link issue. Partial credit for diagnosing Layer 1 problems."
+        },
+        {
+            "id": 113,
+            "issue": "Users cannot connect to the wifi at Site 9.",
+            "root_cause": "Pre-shared key (e.q., PSK) is incorrectly set.",
+            "scoring": "20 points available. A full score is awarded for identifying the Incorrect PSK."
+        },
+        {
+            "id": 114,
+            "issue": "Some users not receiving IP addresses at Site 7.",
+            "root_cause": "DHCP Server is not configured for VLAN 101",
+            "scoring": "100 points available. A full score is awarded for identifying the DHCP misconfiguration on VLAN 101."
+        },
+        {
+            "id": 115,
+            "issue": "Rogue SSID “IDontBelong” detected at Site 8.",
+            "root_cause": "Someone has plugged in their own wifi device to port 6, switch-a, Site 8.",
+            "scoring": "20 points available. A full score is awarded for identifying switch-a port 6 at Site 8 as the source of the rogue SSID."
+        },
+        {
+            "id": 116,
+            "issue": "Site 4 has major network problems.",
+            "root_cause": "Spanning Tree Protocol (e.g., STP) is disabled creating a loop.",
+            "scoring": "50 points available. A full score is awarded for identifying that Spanning Tree Protocol is disabled and causing a loop."
+        },
+        {
+            "id": 117,
+            "issue": "Site 2 is reporting network issues.",
+            "root_cause": "An NVR system is generating high traffic, overwhelming the MX CPU at 75%.",
+            "scoring": "200 points available. A full score is awarded for identifying the NVR causing high CPU on the MX"
+        },
+        {
+            "id": 118,
+            "issue": "Some users in Site 10 are unable to connect to the network.",
+            "root_cause": "VLAN 11 is not allowed on the uplink between switch 1 and switch 2.",
+            "scoring": "75 points available. A full score is awarded for identifying VLAN 11 is missing between switch 1 and switch 2."
+        },
+        {
+            "id": 119,
+            "issue": "Users in Site 9 are unable to access some websites they used to have access to.",
+            "root_cause": "A new security policy has been implemented blocking access to social media websites.",
+            "scoring": "50 points available. A full score is awarded for identifying that a security policy is blocking social media access."
+        }
+    ],
+    "network_issues": [
+        {
+            "id": 1,
+            "issue": "Umbrella is not configured at Site9.",
+            "root_cause": "Umbrella is not configured Site9.",
+            "scoring": "50 points"
+        },
+        {
+            "id": 2,
+            "issue": "TALOS threat defense is not enabled at Site9.",
+            "root_cause": "TALOS is not configured Site9.",
+            "scoring": "50 points"
+        },
+        {
+            "id": 3,
+            "issue": "TALOS threat defense is not enabled at Site10.",
+            "root_cause": "TALOS is not configured Site10.",
+            "scoring": "50 points"
+        }
+    ],
+    "jokes": [
+        "Why do network engineers love coffee? Because without it, they have too many latency issues!",
+        "How does a router apologize? It says, ‘I'm sorry for the packet loss.’",
+        "Why was the switch always calm? Because it had great PoE-ise!"
+    ],
+    "trivia": [
+        "Did you know? The first computer network was the ARPANET, launched in 1969!",
+        "Fun fact: The first ever email was sent by Ray Tomlinson in 1971!",
+        "Networking trivia: IPv6 has 340 undecillion addresses—enough to give every grain of sand its own IP!"
+    ],
+    "snarky_comments": [
+        "Ah, yes, another case of 'Turn it off and on again' failure.",
+        "Sounds like a classic case of 'The user did something weird, and now it's IT’s problem.'",
+        "Did you try offering it a coffee? Sometimes that works for me.",
+        "Real great.  What secret decoder ring did you use to come up with that answer?",
+        "WOAH WOAH WAOH.  Is this Caleb?",
+        "Let me guess.  Caleb gave you that anwser?  RIIIIIIIIGHT!",
+        "WOW.  Every word in that answer was wrong!",
+        "Smooth Moove.  You blew that one!",
+        "As Shakespeare said... Thou hath the brain of a bramble, for thou canst not even ping thy own gateway.",
+        "As Shakespeare said... Thou art as useful as a switch bereft of power!",
+        "As Shakespeare said... Thy packets wander lost, like ghosts unacknowledged by router nor man.",
+        "As Shakespeare said... Thou art as clueless as a firewall with every port flung wide!",
+        "As Shakespeare said... Thou false DHCP knave, assigning IPs like a drunkard spills wine!",
+        "As Shakespeare said... Wouldst thou know subnetting? Nay, thou wouldst sooner divide by zero!",
+        "As Shakespeare said... Thy SSID broadcast is weaker than a sickly moth’s flutter.",
+        "As Shakespeare said... Thine uplink is as stable as a jester on a unicycle!",
+        "As Shakespeare said... Thou sniveling NAT-twisted scoundrel, no port forward shall redeem thee!",
+        "As Shakespeare said... Thy VLANs are tangled worse than a sailor’s dreams in tempest!",
+        "As Shakespeare said... Hadst thou a clue, thou wouldst yet misconfigure spanning tree!",
+        "As Shakespeare said... Thou art the very embodiment of packet loss, constant and inexplicable!",
+        "As Shakespeare said... Wouldst thou troubleshoot a MAC address? Thou canst not even spell it!",
+        "As Shakespeare said... Thy config file is a tragedy in five acts!",
+        "As Shakespeare said... Get thee to a nunnery—and while there, readeth a manual, thou rogue!",
+        "As Shakespeare said... Thou changest cables more oft than minds, yet still no link is seen!",
+        "As Shakespeare said... Thou unplugged the uplink, then did curse the heavens for a storm!",
+        "As Shakespeare said... Thy logs are silent, as if ashamed to bear witness to thy folly.",
+        "As Shakespeare said... Thou art a broadcast storm given flesh and folly!",
+        "As Shakespeare said... Thine understanding of DNS is as shallow as a dried puddle!",
+        "As Shakespeare said... Thou art the cause of more loops than Ariadne's cursed thread!",
+        "As Shakespeare said... Thine firewall is so open, even a knave could telnet to thy soul!",
+        "As Shakespeare said... Wouldst thou configure a WLC? Nay, thou canst not even name a VLAN!",
+        "As Shakespeare said... Thy uplink flaps more oft than a tavern door!",
+        "As Shakespeare said... Thou art a rogue DHCP rogue—yes, a double rogue!",
+        "As Shakespeare said... Thou pingest in vain, for thy default gateway is but a ghost!",
+        "As Shakespeare said... O ill-born tech! Even thy loopback address would flee thy presence!",
+        "As Shakespeare said... Thy switch stack is as broken as thy promises!",
+        "As Shakespeare said... Like a rogue SSID, thou appear unbidden and cause naught but chaos!",
+        "As Shakespeare said... Wouldst thou patch a cable? Nay, thou wouldst tie it in knots and call it art!"
+  ]
+}
+

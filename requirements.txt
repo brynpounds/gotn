@@ -1,0 +1,8 @@
+sentence-transformers
+streamlit
+redis
+influxdb-client
+ollama
+python-dotenv
+watchdog
+
